@@ -1,0 +1,27 @@
+databases:
+  - name: servidorBoris
+    plan: free
+    databaseName: dbcine
+    user: boris
+
+services:
+  - type: web
+    plan: free
+    name: cineUtc
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn cineUtc.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: servidorBoris
+          property: externalConnectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: cineutc-kk32.onrender.com
+
+
+
+
+# set DATABASE_URL=postgresql://david:RkBAp8ZZaE98t5OiwtpfNnJmI0URw2K9@dpg-cqjettqj1k6c739rc1e0-a.oregon-postgres.render.com/dbcine
