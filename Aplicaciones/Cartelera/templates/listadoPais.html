@@ -1,0 +1,43 @@
+{% extends "./plantilla.html" %}
+{% block body %}
+    <br>
+    <div class="card">
+        <div class="card-title text-center">
+            <h3><b>Listado de Países</b></h3>
+        </div>
+    </div>
+    <br>
+    <div class="text-end">
+        <a href="{% url 'nuevoPais' %}" class="btn btn-success">Agregar País</a>
+    </div>
+    <table id="tablaPaises" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Continente</th>
+                <th>Capital</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pais in paises %}
+            <tr>
+                <td>{{ pais.id }}</td>
+                <td>{{ pais.nombre }}</td>
+                <td>{{ pais.continente }}</td>
+                <td>{{ pais.capital }}</td>
+                <td>   
+                    <a href="{% url 'editarPais' pais.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'eliminarPais' pais.id %}" 
+                    onclick="return confirm('¿Está seguro?')" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay países registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
