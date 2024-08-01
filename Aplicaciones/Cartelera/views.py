@@ -52,10 +52,9 @@ def listadoGeneros(request):
     context = {
         'generos': generosBdd,
         'nombres': list(genero_counts.keys()), # Nombres de los géneros
-        'descripciones': list(genero_counts.values()) # Conteo de descripciones por género
+        'descripciones_count': list(genero_counts.values()) # Conteo de descripciones por género
     }
     return render(request, 'listadoGeneros.html', context)
-
 #Se recibe el id para eliminar un genero
 def eliminarGenero(request,id):
     generoEliminar = Genero.objects.get(id=id)
