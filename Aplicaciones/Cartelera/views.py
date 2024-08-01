@@ -52,7 +52,7 @@ def listadoGeneros(request):
     context = {
         'generos': generosBdd,
         'nombres': list(genero_counts.keys()), # Nombres de los géneros
-        'descripciones_count': list(genero_counts.values()) # Conteo de descripciones por género
+        'descripciones': list(genero_counts.values()) # Conteo de descripciones por género
     }
     return render(request, 'listadoGeneros.html', context)
 
