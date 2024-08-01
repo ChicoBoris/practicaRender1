@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles') #añadir este codigo
-STATICFILES_DIRS= (os.path.join(BASE_DIR,'cineUTC/static'),)
+STATICFILES_DIR= (os.path.join(BASE_DIR,'cineUTC/static'),)
 
 #VALIDACION
 if not DEBUG:
@@ -143,6 +143,5 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'cineUTC/media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIR = [BASE_DIR / "static"]
