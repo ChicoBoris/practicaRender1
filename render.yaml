@@ -7,10 +7,10 @@ databases:
 services:
   - type: web
     plan: free
-    name: cineUtc
+    name: cineUTC
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn cineUtc.wsgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "gunicorn cineUTC.wsgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
